@@ -1,29 +1,24 @@
 <app-header />
 <main>
   <ul id="users">
-    {% comment %} NEWER VERSIONS
-    @for (user of users; track user.id;){ {% endcomment %}
-    <li *ngFor="let user of users">
-      <app-user
-       [user]="user"
-       (select)="onSelectUserApp($event)"
-       (doubleClick)="onDoubleClickUserApp($event)"
-      />
-      {% comment %} NEWER VERSIONS @if (selectedUser){ {% endcomment %}
-    </li>
-
+    @for (user of users; track user.id) {
+      <li>
+        <app-user
+          [user]="user"
+          (select)="onSelectUserApp($event)"
+          (doubleClick)="onDoubleClickUserApp($event)"
+        ></app-user>
+      </li>
+    }
   </ul>
 
-  {% comment %} NEWER VERSIONS @if (selectedUser){ {% endcomment %}
+  @if (selectedUser) {
+    <app-tasks
+      [userId]="selectedUser.id"
+      [name]="selectedUser.name"
 
-  <app-tasks *ngIf="selectedUser; else fallback"
-    [name]="selectedUser!.name"
-    [id]="selectedUser!.id"
-    />
-  {% comment %} } @else { {% endcomment %}
-  <ng-template #fallback>
-
-    <p id="fallback"> Select a user to see their tasks</p>
-  {% comment %} } {% endcomment %}
-  </ng-template>
+    ></app-tasks>
+  } @else {
+    <p id="fallback">Select a user to see their tasks</p>
+  }
 </main>
