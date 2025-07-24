@@ -1,5 +1,5 @@
 <div>
-  <button (click)="onSelectUserUser()" (dblclick)="onDoubleClickUser()">
+  <button [class.active]="selected" (click)="onSelectUserUser()" (dblclick)="onDoubleClickUser()">
     <img
      [src]="imagePath"
      [alt]="user.name" />
