@@ -2,6 +2,7 @@ import { Component, Input, Output, computed, input, output, EventEmitter
   //signal, computed
 } from '@angular/core';
 import { User } from './user.model';
+import { CardComponent } from '../shared/card/card.component';
 
 //import { DUMMY_USERS } from '../dummy-users';
 
@@ -18,7 +19,7 @@ import { User } from './user.model';
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
@@ -54,10 +55,6 @@ export class UserComponent {
   }
 
 }
-
-
-
-
 
   //selectedUser = signal(DUMMY_USERS[randomIndex]);
   //imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar)
